@@ -1891,6 +1891,7 @@ int main(int argc, const char* argv[])
     } else {if(argc >= (2 + a)) strcpy(path1, argv[1 + a]); else path1[0] = 0;}
 
     fixpath(path1);
+    printf(path1);
 
     if(stat(path1, &s)<0 || !(S_ISDIR(s.st_mode))) {printf("Invalid Path Folder!\n\nPress ENTER key to exit\n"); get_input_char();return -1;}
 
@@ -2138,7 +2139,7 @@ int main(int argc, const char* argv[])
     idr->length[0]=34;
     idr->ext_attr_length[0]=0;
     set733(&idr->extent[0], directory_iso[0].llba); //lba
-    set733(&idr->size[0], directory_iso[0].ldir * 2048); // tamaño
+    set733(&idr->size[0], directory_iso[0].ldir * 2048); // tamaï¿½o
     //setdaterec(&idr->date[0],dd,mm,aa,ho,mi,se);
     struct iso_directory_record * aisdr = (void *) &sectors[directory_iso[0].llba * 2048];
     memcpy(idr->date, aisdr->date, 7);
@@ -2220,7 +2221,7 @@ int main(int argc, const char* argv[])
     idr->length[0]=34;
     idr->ext_attr_length[0]=0;
     set733(&idr->extent[0], directory_iso[0].wlba); //lba
-    set733(&idr->size[0], directory_iso[0].wdir * 2048); // tamaño
+    set733(&idr->size[0], directory_iso[0].wdir * 2048); // tamaï¿½o
     //setdaterec(&idr->date[0],dd,mm,aa,ho,mi,se);
     aisdr = (void *) &sectors[directory_iso[0].wlba * 2048];
     memcpy(idr->date, aisdr->date, 7);
@@ -2251,6 +2252,7 @@ int main(int argc, const char* argv[])
     memcpy(&isd->id[0],"CD001",5);
     
 
+    printf(output_name);
     FILE *fp2 = fopen(output_name, "wb");
 
     if(fp2) {
