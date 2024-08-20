@@ -1891,7 +1891,7 @@ int main(int argc, const char* argv[])
     } else {if(argc >= (2 + a)) strcpy(path1, argv[1 + a]); else path1[0] = 0;}
 
     fixpath(path1);
-    printf(path1);
+    printf('%s\n' "$path1");
 
     if(stat(path1, &s)<0 || !(S_ISDIR(s.st_mode))) {printf("Invalid Path Folder!\n\nPress ENTER key to exit\n"); get_input_char();return -1;}
 
